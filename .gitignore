@@ -32,3 +32,4 @@ htmlcov/
 
 # Project Specific
 node_modules/
+mkdocs/site
