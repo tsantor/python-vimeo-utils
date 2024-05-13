@@ -1,10 +1,10 @@
 # Python Vimeo Utils
 
-![Coverage](https://img.shields.io/badge/coverage-93%25-brightgreen)
+![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)
 
 ## Overview
 
-Wrapper functions around pyvimeo for common interactions with the Vimeo SDK with sane `fields` defaults. Vimeo loves to return **overly verbose** responses.
+An API wrapper around [pyvimeo](https://github.com/vimeo/vimeo.py) for common interactions with the Vimeo SDK with sane `fields` defaults. Vimeo loves to return **overly verbose** responses.
 
 ## Installation
 
@@ -16,7 +16,8 @@ python3 -m pip install python-vimeo-utils
 
 ## Usage
 ```python
-import vimeo_utils
+import vimeo
+from vimeo_utils import VimeoAPIClient
 
 vclient = vimeo.VimeoClient(
     token="VIMEO_ACCESS_TOKEN",
@@ -24,7 +25,9 @@ vclient = vimeo.VimeoClient(
     secret="VIMEO_CLIENT_SECRET",
 )
 
-vimeo_utils.get_video_info(vclient, '/videos/1234567890')
+vapi_client = VimeoAPIClient(vclient)
+
+vapi_client.get_video('/videos/1234567890')
 ```
 
 <!-- ## Documentation
@@ -47,14 +50,6 @@ make coverage
 make open_coverage
 ```
 
-## Deploying
-
-```bash
-# Publish to PyPI Test before the live PyPi
-make release_test
-make release
-```
-
 ## Issues
 
-If you experience any issues, please create an [issue](https://github.com/tsantor/python-vimeo-utils/issues) on Github.
+If you experience any issues, please create an [issue](https://github.com/tsantor/python-vimeo-utils/issues) on GitHub.
