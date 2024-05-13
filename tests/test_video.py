@@ -33,36 +33,11 @@ def vimeo_client() -> vimeo.VimeoClient:
 
 
 @pytest.fixture(scope="class", autouse=True)
-def _setup_and_teardown(vimeo_client, request):
+def _setup_and_teardown(vimeo_client, video_params, request):
     # Upload video
-    params = {
-        "name": "Test",
-        "description": "Test upload and edit",
-        "privacy": {
-            "add": False,
-            "comments": "nobody",
-            "download": True,
-            "embed": "public",
-            "view": "disable",
-        },
-        "review_page": {"active": False},
-        "embed": {
-            "buttons": {
-                "embed": False,
-                "like": False,
-                "share": False,
-                "watchlater": False,
-            },
-            "title": {
-                "name": "hide",
-                "owner": "hide",
-                "portrait": "hide",
-            },
-            "logos": {"vimeo": False},
-            "end_screen": {"type": "empty"},
-        },
-    }
-    request.cls.video_uri = upload_video(vimeo_client, "tests/test.mp4", params)
+    request.cls.video_uri = upload_video(
+        vimeo_client, "tests/test.mp4", params=video_params
+    )
 
     # Block until video is available
     block_until_available(vimeo_client, request.cls.video_uri)

@@ -2,7 +2,7 @@ import logging
 import time
 from typing import Optional
 
-from requests import Request
+from requests import Response
 from vimeo import VimeoClient
 
 from .constants import TranscodeStatus
@@ -47,7 +47,7 @@ def edit_video(vclient: VimeoClient, vimeo_uri: str, params: dict) -> dict:
     return response.json()
 
 
-def set_embed_preset(vclient: VimeoClient, vimeo_uri: str, preset_id: int) -> Request:
+def set_embed_preset(vclient: VimeoClient, vimeo_uri: str, preset_id: int) -> Response:
     """Set the embed preset."""
     uri = f"{vimeo_uri}/presets/{preset_id}"
     response = vclient.put(uri)
@@ -57,7 +57,7 @@ def set_embed_preset(vclient: VimeoClient, vimeo_uri: str, preset_id: int) -> Re
 
 def add_domain_to_whitelist(
     vclient: VimeoClient, vimeo_uri: str, domain: str
-) -> Request:
+) -> Response:
     """Add domain to whitelist."""
     uri = f"{vimeo_uri}/privacy/domains/{domain}"
     response = vclient.put(uri)
@@ -91,16 +91,7 @@ def get_download_link(vclient: VimeoClient, vimeo_uri: str) -> Optional[str]:  #
     return None
 
 
-def move_to_project(vclient: VimeoClient, vimeo_uri: str, project_id: int) -> Request:
-    """Move to project"""
-    vimeo_uri = vimeo_uri.lstrip("/")
-    uri = f"/me/projects/{project_id}/{vimeo_uri}"
-    response = vclient.put(uri)
-    response.raise_for_status()
-    return response
-
-
-def delete_video(vclient: VimeoClient, vimeo_uri: str) -> Request:
+def delete_video(vclient: VimeoClient, vimeo_uri: str) -> Response:
     response = vclient.delete(vimeo_uri)
     response.raise_for_status()
     return response

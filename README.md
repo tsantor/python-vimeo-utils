@@ -27,8 +27,8 @@ vclient = vimeo.VimeoClient(
 vimeo_utils.get_video_info(vclient, '/videos/1234567890')
 ```
 
-## Documentation
-Visit the docs [here](https://github.io/tsantor/python-vimeo-utils/docs)
+<!-- ## Documentation
+Visit the docs [here](https://github.io/tsantor/python-vimeo-utils/docs) -->
 
 ## Development
 To get a list of all commands with descriptions simply run `make`.

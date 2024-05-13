@@ -9,7 +9,6 @@ from .video import get_video_info  # noqa: F401
 from .video import is_available  # noqa: F401  # noqa: F401
 from .video import is_playable  # noqa: F401
 from .video import is_transcode_complete  # noqa: F401
-from .video import move_to_project  # noqa: F401
 from .video import set_embed_preset  # noqa: F401
 from .video import upload_video  # noqa: F401
 
