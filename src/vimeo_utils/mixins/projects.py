@@ -34,7 +34,9 @@ class ProjectMixin:
         response.raise_for_status()
         return response
 
-    def get_project(self, project_id: int, fields: Optional[list[str]]) -> Response:  # noqa: UP007
+    def get_project(
+        self, project_id: int, fields: Optional[list[str]] = None
+    ) -> Response:  # noqa: UP007
         """Return a project with sane defaults."""
         fields = fields or ["uri", "name"]
         params = {"fields": ",".join(fields)} if fields else {}

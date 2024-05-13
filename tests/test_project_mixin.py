@@ -24,6 +24,18 @@ def test_create_project(project_id):
     assert isinstance(project_id, str)
 
 
+def test_get_project(vclient, project_id):
+    response = vclient.get_project(project_id)
+    assert response.status_code == HTTPStatus.OK
+    assert response.json()["name"] == "Test Project"
+
+
+def test_edit_project(vclient, project_id):
+    response = vclient.edit_project(project_id, "Test edit")
+    assert response.status_code == HTTPStatus.OK
+    assert response.json()["name"] == "Test edit"
+
+
 def test_get_all_projects(vclient):
     response = vclient.get_all_projects()
     assert response.status_code == HTTPStatus.OK

@@ -170,3 +170,18 @@ push_to_s3: create_latest_copy  ## Push distro to S3 bucket
 # -----------------------------------------------------------------------------
 
 # Add your project specific commands here
+
+pytest_user_mixin:  ## Run tests in verbose mode
+	pytest -vvs tests/test_user_mixin.py
+
+pytest_embed_preset_mixin:  ## Run tests in verbose mode
+	pytest -vvs tests/test_embed_preset_mixin.py
+
+pytest_project_mixin:  ## Run tests in verbose mode
+	pytest -vvs tests/test_project_mixin.py
+
+pytest_video_mixin:  ## Run tests in verbose mode
+	pytest -vvs tests/test_video_mixin.py
+
+pytest_utils:  ## Run tests in verbose mode
+	pytest -vvs tests/test_utils.py

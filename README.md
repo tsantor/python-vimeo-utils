@@ -1,6 +1,6 @@
 # Python Vimeo Utils
 
-![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)
+![Coverage](https://img.shields.io/badge/coverage-93%25-brightgreen)
 
 ## Overview
 
